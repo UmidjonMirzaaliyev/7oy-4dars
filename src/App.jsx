@@ -8,6 +8,7 @@ import Cart from "./pages/Cart"
 import Products from "./pages/Product"
 import Checkout from "./pages/Checkout"
 import Orders from "./pages/Orders"
+import ErrorPage from "./pages/ErrorPage"
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   return (
@@ -18,13 +19,14 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/cart" element={<Cart></Cart>}></Route>
-        <Route path="./products" element={<Products></Products>}></Route>
+        <Route path="/products" element={<Products></Products>}></Route>
         {
           token && <>
-            <Route path="./checkout" element={<Checkout></Checkout>}></Route>
-            <Route path="./orders" element={<Orders></Orders>}></Route>
+            <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+            <Route path="/orders" element={<Orders></Orders>}></Route>
           </>
         }
+        <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
       </Routes>
     </div>
   );
